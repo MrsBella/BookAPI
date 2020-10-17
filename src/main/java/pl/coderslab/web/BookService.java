@@ -8,7 +8,7 @@ public interface BookService {
 
     List<Book> getList();
     Book returnBook(Long id);
-    void addBook(Book book);
+    String addBook(Book book);
     void updateBook(Long id, Book book);
     void deleteBook(Long id);
 }

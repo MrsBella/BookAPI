@@ -33,8 +33,8 @@ public class BookController {
     }
 
     @PostMapping("")
-    public void addBook(@RequestBody Book book) {
-        memoryBookService.addBook(book);
+    public String addBook(@RequestBody Book book) {
+        return memoryBookService.addBook(book);
     }
 
     @DeleteMapping("/{id}")

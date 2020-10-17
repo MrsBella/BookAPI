@@ -27,9 +27,10 @@ public class MemoryBookService implements BookService {
         return list;
     }
 
+    @Override
     public Book returnBook(Long id) {
         for (Book book : list) {
-            if (book.getId() == id) {
+            if (book.getId().equals(id)) {
                 return book;
             }
         }
@@ -37,20 +38,21 @@ public class MemoryBookService implements BookService {
     }
 
     @Override
-    public void addBook(Book book) {
+    public String addBook(Book book) {
         for (Book b : list) {
             if (b.getIsbn().equals(book.getIsbn())) {
-                return;
+                return  "{\n \"message\":\"This book is on the list\" \n}";
             }
         }
         book.setId(nextId++);
         list.add(book);
+        return null;
     }
 
     @Override
     public void deleteBook(Long id) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
+            if (list.get(i).getId().equals(id)) {
                 list.remove(i);
             }
         }
@@ -59,7 +61,7 @@ public class MemoryBookService implements BookService {
     @Override
     public void updateBook(Long id, Book book) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
+            if (list.get(i).getId().equals(id)) {
                 list.set(i, book);
             }
         }
