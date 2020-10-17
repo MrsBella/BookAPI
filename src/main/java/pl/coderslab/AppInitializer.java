@@ -4,6 +4,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -23,18 +25,9 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
     }
 
     @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[] {
-                new CharacterEncodingFilter()
-        };
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.addFilter("name", CharacterEncodingFilter.class)
+                .addMappingForUrlPatterns(null, true, "/*");
     }
-
-//    @Override
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//        FilterRegistration.Dynamic fr = servletContext.addFilter("encodingFilter",
-//                new CharacterEncodingFilter());
-//        fr.setInitParameter("encoding", "UTF-8");
-//        fr.setInitParameter("forceEncoding", "true");
-//        fr.addMappingForUrlPatterns(null, true, "/*");
-//    }
 }
