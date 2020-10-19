@@ -4,7 +4,8 @@
 ## Table of contents
 [General info](#general-info) <br>
 [Application functions](#application-functions) <br>
-[Technologies](#technologies)
+[Technologies](#technologies) <br>
+[Status](#status)
 
 ## General info
 The application allows you to manage books downloaded from a mocked database. The data are transferred in JSONs using 
@@ -23,3 +24,6 @@ API.
 * Maven
 * Servlets
 * Jackson
+
+## Status
+Project is: _finished_
