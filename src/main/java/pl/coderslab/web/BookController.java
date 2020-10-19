@@ -1,6 +1,8 @@
 package pl.coderslab.web;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import pl.coderslab.domain.Book;
 import pl.coderslab.domain.MemoryBookService;
 
@@ -29,7 +31,11 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book book(@PathVariable Long id) {
-        return memoryBookService.returnBook(id);
+        return memoryBookService.returnBook(id).orElseThrow(() -> {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
+        });
     }
 
     @PostMapping("")
