@@ -10,6 +10,6 @@ public interface BookService {
     List<Book> getList();
     Optional<Book> returnBook(Long id);
     String addBook(Book book);
-    void updateBook(Long id, Book book);
+    void updateBook(Book book);
     void deleteBook(Long id);
 }

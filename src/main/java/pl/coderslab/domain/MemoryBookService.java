@@ -57,9 +57,9 @@ public class MemoryBookService implements BookService {
     }
 
     @Override
-    public void updateBook(Long id, Book book) {
+    public void updateBook(Book book) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId().equals(id)) {
+            if (list.get(i).getId().equals(book.getId())) {
                 list.set(i, book);
             }
         }
